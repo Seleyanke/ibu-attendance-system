@@ -1,0 +1,13 @@
+cat > render.yaml << 'EOF'
+services:
+  - type: web
+    name: ibu-attendance-system
+    runtime: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn ibu_attendance_final_fixed:app
+    envVars:
+      - key: SECRET_KEY
+        generateValue: true
+      - key: JWT_SECRET_KEY
+        generateValue: true
+EOF
